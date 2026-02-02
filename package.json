@@ -1,0 +1,24 @@
+{
+  "name": "pause-app",
+  "version": "1.0.0",
+  "description": "PAUSE - Your Emotional Guide",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "keywords": [
+    "emotional-wellbeing",
+    "mental-health",
+    "therapy",
+    "self-care"
+  ],
+  "author": "Manisha Kinger",
+  "license": "MIT"
+}
