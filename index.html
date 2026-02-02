@@ -3,36 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAUSE - Your Emotional Guide</title>
-    <meta name="description" content="A safe space to understand your feelings without judgment. Complete privacy - no data saved or stored.">
+    <title>PAUSE — Understand What's Happening Inside</title>
+    <meta name="description" content="A calm space to understand your emotions without judgment, fixing, or therapy. One word. One moment. Back to your day.">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 style=%22fill:%2300cc66%22>🌿</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 style=%22fill:%2300cc66%22>⏸️</text></svg>">
     
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* [ALL YOUR CSS FROM BEFORE - KEEP IT EXACTLY AS IS] */
         :root {
             --primary: #667eea;
             --primary-dark: #5a67d8;
             --secondary: #764ba2;
             --accent: #38b2ac;
-            --success: #48bb78;
-            --warning: #ed8936;
             --light: #f8fafc;
             --dark: #1e293b;
             --gray: #64748b;
-            --border-radius: 16px;
-            --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.12);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 12px;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
         }
         
         * {
@@ -42,123 +38,1243 @@
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #f0f4f8 100%);
             min-height: 100vh;
             color: var(--dark);
             line-height: 1.6;
+            padding: 0;
         }
         
-        /* [REST OF YOUR CSS - KEEP EVERYTHING] */
-        /* ... All your existing CSS styles ... */
+        /* Header */
+        .app-header {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            font-size: 24px;
+        }
+        
+        .logo-text {
+            font-size: 18px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 16px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .nav-btn:hover {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--primary);
+        }
+        
+        /* Main Container */
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 3rem 0 2rem;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 500px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+        
+        /* Input Card */
+        .input-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .input-label {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .input-subtext {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: #f8fafc;
+            margin-bottom: 1.5rem;
+            font-family: inherit;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .input-placeholder {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .placeholder-example {
+            background: #f1f5f9;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        /* Loading Section */
+        .loading-section {
+            display: none;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f1f5f9;
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            animation: spin 1s linear infinite;
+        }
+        
+        .loading-text {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        
+        /* Response Section */
+        .response-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .response-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .response-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .response-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .response-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        
+        .response-content {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+        
+        .new-feeling-btn {
+            width: 100%;
+            padding: 1rem;
+            background: white;
+            color: var(--primary);
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .new-feeling-btn:hover {
+            background: #f8fafc;
+            border-color: var(--primary);
+        }
+        
+        /* Footer */
+        .app-footer {
+            text-align: center;
+            padding: 3rem 1.5rem 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .footer-tagline {
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.85rem;
+        }
+        
+        /* Privacy Info */
+        .privacy-info {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--gray);
+            text-align: center;
+        }
+        
+        .privacy-info i {
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+        
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: var(--border-radius);
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            padding: 0.25rem;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            color: var(--primary);
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 1.5rem 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .input-card,
+            .response-card {
+                padding: 1.5rem;
+            }
+            
+            .hero-section {
+                padding: 2rem 0 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0 1rem;
+            }
+            
+            .hero-title {
+                font-size: 1.75rem;
+            }
+            
+            .input-field {
+                padding: 0.875rem;
+            }
+            
+            .submit-btn,
+            .new-feeling-btn {
+                padding: 0.875rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- [ALL YOUR HTML - KEEP EVERYTHING] -->
     <!-- Header -->
     <header class="app-header">
         <div class="header-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">🌿</div>
+            <div class="logo">
+                <div class="logo-icon">⏸️</div>
                 <div class="logo-text">PAUSE</div>
-            </a>
-            <div class="nav-actions">
-                <div class="length-selector">
-                    <span class="length-label">Response:</span>
-                    <div class="length-options">
-                        <button class="length-option active" data-length="quick">Quick</button>
-                        <button class="length-option" data-length="keypoints">Key Points</button>
-                        <button class="length-option" data-length="detailed">Detailed</button>
-                    </div>
-                </div>
-                <button class="nav-btn" id="infoBtn" title="Important Information">
-                    <i class="fas fa-info-circle"></i>
-                    <div class="info-badge">!</div>
-                </button>
-                <button class="nav-btn" id="themeToggle" title="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="nav-btn" id="settingsBtn" title="Settings">
-                    <i class="fas fa-cog"></i>
-                </button>
             </div>
+            <button class="nav-btn" id="infoBtn" title="About PAUSE">
+                <i class="fas fa-info-circle"></i>
+            </button>
         </div>
     </header>
 
-    <!-- [CONTINUE WITH ALL YOUR EXISTING HTML] -->
-    <!-- ... All your existing HTML ... -->
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">What are you feeling right now?</h1>
+            <p class="hero-subtitle">One word or one sentence is enough.</p>
+        </section>
+
+        <!-- Input Section -->
+        <section class="input-card" id="inputSection">
+            <input 
+                type="text" 
+                class="input-field" 
+                id="feelingInput" 
+                placeholder="Anxious, I feel heavy, I'm tired of explaining, Something feels off..."
+                autocomplete="off"
+                autofocus
+            >
+            
+            <div class="input-placeholder">
+                <span class="placeholder-example">Anxious</span>
+                <span class="placeholder-example">I feel heavy</span>
+                <span class="placeholder-example">I'm tired of explaining</span>
+                <span class="placeholder-example">Something feels off</span>
+            </div>
+            
+            <button class="submit-btn" id="submitBtn">
+                <i class="fas fa-search"></i>
+                Show me what's happening
+            </button>
+            
+            <div class="privacy-info">
+                <i class="fas fa-user-shield"></i>
+                No data saved. Nothing stored. Your feeling stays with you.
+            </div>
+        </section>
+
+        <!-- Loading Section -->
+        <section class="loading-section" id="loadingSection">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Understanding what's happening</p>
+        </section>
+
+        <!-- Response Section -->
+        <section class="response-section" id="responseSection">
+            <div class="response-card">
+                <div class="response-item" id="whatsHappening">
+                    <div class="response-title">
+                        <i class="fas fa-brain"></i>
+                        What's happening
+                    </div>
+                    <div class="response-content" id="whatsHappeningContent"></div>
+                </div>
+                
+                <div class="response-item" id="whyLearned">
+                    <div class="response-title">
+                        <i class="fas fa-history"></i>
+                        Why this was learned
+                    </div>
+                    <div class="response-content" id="whyLearnedContent"></div>
+                </div>
+                
+                <div class="response-item" id="beliefCheck">
+                    <div class="response-title">
+                        <i class="fas fa-question-circle"></i>
+                        One belief to check
+                    </div>
+                    <div class="response-content" id="beliefCheckContent"></div>
+                </div>
+                
+                <div class="response-item" id="boundaryRule">
+                    <div class="response-title">
+                        <i class="fas fa-shield-alt"></i>
+                        One small boundary
+                    </div>
+                    <div class="response-content" id="boundaryRuleContent"></div>
+                </div>
+                
+                <div class="response-item" id="noticeAvoid">
+                    <div class="response-title">
+                        <i class="fas fa-eye"></i>
+                        What to notice & what to avoid
+                    </div>
+                    <div class="response-content" id="noticeAvoidContent"></div>
+                </div>
+                
+                <div class="response-item" id="simpleScience">
+                    <div class="response-title">
+                        <i class="fas fa-flask"></i>
+                        Simple science
+                    </div>
+                    <div class="response-content" id="simpleScienceContent"></div>
+                </div>
+            </div>
+            
+            <button class="new-feeling-btn" id="newFeelingBtn">
+                <i class="fas fa-redo"></i>
+                Check another feeling
+            </button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-logo">
+            <div class="logo-icon">⏸️</div>
+            <div class="footer-logo-text">PAUSE</div>
+        </div>
+        
+        <p class="footer-tagline">
+            A calm space to understand your emotions without judgment, fixing, or therapy.<br>
+            One word. One moment. Back to your day.
+        </p>
+        
+        <div class="copyright">
+            <p>Created with care for better emotional understanding worldwide</p>
+        </div>
+    </footer>
+
+    <!-- Info Modal -->
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">About PAUSE</h3>
+                <button class="modal-close" id="closeInfo">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 1rem;"><strong>PAUSE helps you understand what's happening inside.</strong></p>
+                
+                <div style="margin-bottom: 1rem;">
+                    <p style="margin-bottom: 0.5rem;"><strong>How it works:</strong></p>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1rem;">
+                        <li>Type one word or sentence about how you feel</li>
+                        <li>Get a calm, grounded understanding</li>
+                        <li>Return to your day</li>
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <p style="margin-bottom: 0.5rem;"><strong>What PAUSE is not:</strong></p>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1rem;">
+                        <li>Not therapy or counseling</li>
+                        <li>Not a diagnostic tool</li>
+                        <li>Not a fix or solution</li>
+                        <li>Not a journal or tracker</li>
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <p style="margin-bottom: 0.5rem;"><strong>Privacy:</strong></p>
+                    <p>Nothing is saved. Nothing is stored. Your feelings stay with you.</p>
+                </div>
+                
+                <p style="font-style: italic; color: var(--gray);">"Nothing is wrong. Something makes sense."</p>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // [ALL YOUR JAVASCRIPT - KEEP EVERYTHING]
-        // ==================== QUOTES DATABASE ====================
-        const quotes = [
-            {
-                text: "The curious paradox is that when I accept myself just as I am, then I can change.",
-                author: "Carl Rogers"
-            },
-            // ... all your quotes ...
-        ];
-
-        // ==================== EMOTIONAL PATTERNS ====================
+        // ==================== EMOTIONAL PATTERNS DATABASE ====================
+        // Each feeling has multiple response variations that rotate
         const emotionalPatterns = {
             anxious: {
-                quick: {
-                    whats_happening: "Your nervous system is on high alert, scanning for potential threats. This is your body's natural protection mechanism activating.",
-                    why_learned: "This hyper-vigilance helped our ancestors survive real dangers. Today it often gets triggered by uncertainty, deadlines, or social pressures.",
-                    belief: "Is it true that worrying will prevent bad things from happening?",
-                    boundary: "Try: 'I can acknowledge this anxiety while choosing where to focus my attention.'",
-                    notice: "Observe shallow breathing, muscle tension, or racing thoughts without judgment.",
-                    avoid: "Resist the urge to search for more potential problems to justify the anxiety.",
-                    science: "Anxiety activates the amygdala, releasing cortisol. This temporary state helps with quick reactions but isn't designed for constant activation."
-                },
-                // ... all your patterns ...
+                variations: [
+                    {
+                        whats_happening: "Your system is scanning for potential difficulties. It's gathering information, not panicking.",
+                        why_learned: "This attentiveness once helped notice small changes in the environment before they became problems.",
+                        belief: "Is it true that noticing everything will keep things steady?",
+                        boundary: "You might try letting one small thing go unnoticed today, just to see what happens.",
+                        notice: "Notice your breath moving in and out without changing it.",
+                        avoid: "Avoid checking the same concern more than once.",
+                        science: "The mind prepares for possible challenges by staying alert."
+                    },
+                    {
+                        whats_happening: "Attention is resting on what might come next rather than what is here now.",
+                        why_learned: "Looking ahead helped anticipate needs before they became urgent.",
+                        belief: "Does planning prevent uncertainty?",
+                        boundary: "Try allowing one unknown to remain unknown for an hour.",
+                        notice: "Notice the space between thoughts.",
+                        avoid: "Avoid making additional plans right now.",
+                        science: "Forward-thinking is a natural pattern, not an emergency."
+                    },
+                    {
+                        whats_happening: "Energy is gathering for possible action, waiting to see where it's needed.",
+                        why_learned: "This readiness once made transitions between activities smoother.",
+                        belief: "Should energy always have a clear purpose?",
+                        boundary: "Try letting energy be present without directing it anywhere.",
+                        notice: "Notice sensations in your hands.",
+                        avoid: "Avoid explaining why you feel this way.",
+                        science: "The body sometimes prepares before knowing what for."
+                    }
+                ]
             },
-            // ... all your emotional patterns ...
+            
+            overwhelmed: {
+                variations: [
+                    {
+                        whats_happening: "Your attention is being pulled in several directions at once.",
+                        why_learned: "Multi-tasking once helped manage multiple basic needs simultaneously.",
+                        belief: "Must everything receive equal attention right now?",
+                        boundary: "Try letting one thing wait while you attend to nothing at all.",
+                        notice: "Notice which direction your attention wants to go first.",
+                        avoid: "Avoid adding anything new to your mental list.",
+                        science: "Mental capacity naturally fluctuates throughout the day."
+                    },
+                    {
+                        whats_happening: "Your system is receiving more input than it can process smoothly.",
+                        why_learned: "Processing multiple streams of information once helped navigate complex environments.",
+                        belief: "Should processing always happen immediately?",
+                        boundary: "Try letting one piece of information remain unprocessed.",
+                        notice: "Notice the difference between urgent and important.",
+                        avoid: "Avoid trying to organize everything at once.",
+                        science: "Input sometimes exceeds processing speed temporarily."
+                    }
+                ]
+            },
+            
+            sad: {
+                variations: [
+                    {
+                        whats_happening: "Your emotional system is processing something meaningful.",
+                        why_learned: "Slowing down once allowed important experiences to integrate properly.",
+                        belief: "Should meaningful things feel light?",
+                        boundary: "Try allowing the feeling to be present without needing to understand it.",
+                        notice: "Notice where in your body you feel this most.",
+                        avoid: "Avoid judging yourself for feeling this way.",
+                        science: "Depth of feeling correlates with depth of experience."
+                    },
+                    {
+                        whats_happening: "Something inside is settling, making room.",
+                        why_learned: "Making space once allowed for necessary changes to occur naturally.",
+                        belief: "Is emptiness always a problem?",
+                        boundary: "Try letting the space exist without filling it.",
+                        notice: "Notice what wants to be felt, not fixed.",
+                        avoid: "Avoid rushing to feel differently.",
+                        science: "Emotional systems sometimes clear space for what's next."
+                    }
+                ]
+            },
+            
+            angry: {
+                variations: [
+                    {
+                        whats_happening: "Your system is noticing something doesn't align with your values.",
+                        why_learned: "This detection once helped maintain personal boundaries and fairness.",
+                        belief: "Must misalignment always be addressed immediately?",
+                        boundary: "Try noticing the misalignment without needing to correct it.",
+                        notice: "Notice the energy in your body without acting on it.",
+                        avoid: "Avoid rehearsing what you might say or do.",
+                        science: "The nervous system registers mismatch as important information."
+                    },
+                    {
+                        whats_happening: "Energy is gathering around a perceived boundary.",
+                        why_learned: "Protective energy once helped maintain personal space and resources.",
+                        belief: "Does strong energy require immediate release?",
+                        boundary: "Try letting the energy be present without discharging it.",
+                        notice: "Notice where you feel most protected.",
+                        avoid: "Avoid escalating the situation in your mind.",
+                        science: "Boundary awareness activates physical energy systems."
+                    }
+                ]
+            },
+            
+            tired: {
+                variations: [
+                    {
+                        whats_happening: "Your system is requesting a pause in output.",
+                        why_learned: "Conserving energy once ensured resources were available when truly needed.",
+                        belief: "Should output remain constant all day?",
+                        boundary: "Try doing one less thing than you think you should.",
+                        notice: "Notice the difference between tired and sleepy.",
+                        avoid: "Avoid pushing through with stimulants.",
+                        science: "Energy conservation is a natural biological rhythm."
+                    },
+                    {
+                        whats_happening: "Resources are temporarily allocated elsewhere.",
+                        why_learned: "Resource shifting once allowed for repair and integration during quiet periods.",
+                        belief: "Must all systems be fully available at all times?",
+                        boundary: "Try allowing one system to rest while others work.",
+                        notice: "Notice which type of rest your body wants.",
+                        avoid: "Avoid judging your capacity right now.",
+                        science: "The body naturally cycles between expenditure and restoration."
+                    }
+                ]
+            },
+            
+            lonely: {
+                variations: [
+                    {
+                        whats_happening: "Your social system is noticing current connection patterns.",
+                        why_learned: "Monitoring connection once helped maintain important relationships.",
+                        belief: "Should connection feel constant?",
+                        boundary: "Try noticing connection without needing to act on it.",
+                        notice: "Notice the quality of connection you have with yourself.",
+                        avoid: "Avoid comparing your connections to others.",
+                        science: "Social systems naturally assess connection quality regularly."
+                    },
+                    {
+                        whats_happening: "Your system is distinguishing between alone and lonely.",
+                        why_learned: "This distinction once helped balance social time with personal time.",
+                        belief: "Is being alone the same as being lonely?",
+                        boundary: "Try being alone without interpreting it as lonely.",
+                        notice: "Notice what kind of connection would feel right.",
+                        avoid: "Avoid filling the space with noise.",
+                        science: "Humans naturally cycle between social and solitary states."
+                    }
+                ]
+            },
+            
+            stressed: {
+                variations: [
+                    {
+                        whats_happening: "Your system is responding to multiple demands simultaneously.",
+                        why_learned: "Handling multiple demands once helped manage complex survival situations.",
+                        belief: "Must all demands receive equal attention?",
+                        boundary: "Try attending to one demand while letting others wait.",
+                        notice: "Notice which demand feels most pressing.",
+                        avoid: "Avoid creating additional internal demands.",
+                        science: "The stress response is designed for temporary high-demand situations."
+                    }
+                ]
+            },
+            
+            happy: {
+                variations: [
+                    {
+                        whats_happening: "Your system is registering that things are working well.",
+                        why_learned: "Noticing what works once helped repeat successful patterns.",
+                        belief: "Should good feelings be analyzed?",
+                        boundary: "Try letting the feeling be without examining why.",
+                        notice: "Notice where in your body you feel this.",
+                        avoid: "Avoid worrying about when it might end.",
+                        science: "Positive reinforcement helps consolidate beneficial patterns."
+                    }
+                ]
+            },
+            
+            numb: {
+                variations: [
+                    {
+                        whats_happening: "Your emotional system is taking a necessary pause.",
+                        why_learned: "Temporary pauses once prevented emotional overload during intense periods.",
+                        belief: "Should feeling be constant?",
+                        boundary: "Try allowing the pause without judging it.",
+                        notice: "Notice physical sensations instead of emotions.",
+                        avoid: "Avoid forcing yourself to feel something.",
+                        science: "Emotional systems sometimes rest between cycles."
+                    }
+                ]
+            },
+            
+            confused: {
+                variations: [
+                    {
+                        whats_happening: "Your mind is holding multiple possibilities without choosing one.",
+                        why_learned: "Considering multiple options once led to better decisions.",
+                        belief: "Must everything be clear immediately?",
+                        boundary: "Try allowing confusion to exist without resolving it.",
+                        notice: "Notice what you do know clearly.",
+                        avoid: "Avoid forcing premature clarity.",
+                        science: "Confusion often precedes new understanding."
+                    }
+                ]
+            },
+            
+            frustrated: {
+                variations: [
+                    {
+                        whats_happening: "Your system is noticing a gap between expectation and reality.",
+                        why_learned: "Noticing gaps once helped adjust efforts for better results.",
+                        belief: "Should reality always match expectation?",
+                        boundary: "Try noticing the gap without needing to close it.",
+                        notice: "Notice what's actually happening versus what you expected.",
+                        avoid: "Avoid increasing effort without checking if it's needed.",
+                        science: "Frustration signals a need for adjustment, not failure."
+                    }
+                ]
+            },
+            
+            calm: {
+                variations: [
+                    {
+                        whats_happening: "Your system is in a state of balanced awareness.",
+                        why_learned: "Balance once allowed for clear observation and appropriate response.",
+                        belief: "Should calmness be maintained?",
+                        boundary: "Try letting calmness be without holding onto it.",
+                        notice: "Notice how calm feels different from numb.",
+                        avoid: "Avoid analyzing why you feel calm.",
+                        science: "The nervous system naturally seeks equilibrium."
+                    }
+                ]
+            }
         };
 
-        // ==================== APP STATE ====================
-        let currentResponseLength = 'quick';
-        let lastFeeling = '';
+        // ==================== RESPONSE ROTATION SYSTEM ====================
+        // Ensures users get different responses each time
+        const responseHistory = {};
+        
+        function getNextResponseVariation(feelingKey) {
+            if (!responseHistory[feelingKey]) {
+                responseHistory[feelingKey] = {
+                    index: 0,
+                    lastUsed: Date.now()
+                };
+            }
+            
+            const pattern = emotionalPatterns[feelingKey];
+            if (!pattern) return null;
+            
+            const variations = pattern.variations;
+            const history = responseHistory[feelingKey];
+            
+            // Get next variation (round robin)
+            const variation = variations[history.index % variations.length];
+            
+            // Update index for next time
+            history.index = (history.index + 1) % variations.length;
+            history.lastUsed = Date.now();
+            
+            return variation;
+        }
+
+        // ==================== FEELING MATCHING ====================
+        function matchFeelingToPattern(inputFeeling) {
+            const feeling = inputFeeling.toLowerCase().trim();
+            
+            // Common feeling mappings
+            const feelingMap = {
+                // Anxious
+                'anxious': 'anxious',
+                'anxiety': 'anxious',
+                'worried': 'anxious',
+                'nervous': 'anxious',
+                'tense': 'anxious',
+                'panicky': 'anxious',
+                'uneasy': 'anxious',
+                'apprehensive': 'anxious',
+                'on edge': 'anxious',
+                'restless': 'anxious',
+                
+                // Overwhelmed
+                'overwhelmed': 'overwhelmed',
+                'overwhelm': 'overwhelmed',
+                'too much': 'overwhelmed',
+                'swamped': 'overwhelmed',
+                'buried': 'overwhelmed',
+                'drowning': 'overwhelmed',
+                'can\'t handle': 'overwhelmed',
+                
+                // Sad
+                'sad': 'sad',
+                'sadness': 'sad',
+                'down': 'sad',
+                'low': 'sad',
+                'blue': 'sad',
+                'unhappy': 'sad',
+                'melancholy': 'sad',
+                'grief': 'sad',
+                'heartbroken': 'sad',
+                'hopeless': 'sad',
+                
+                // Angry
+                'angry': 'angry',
+                'anger': 'angry',
+                'mad': 'angry',
+                'furious': 'angry',
+                'irritated': 'angry',
+                'annoyed': 'angry',
+                'frustrated': 'angry',
+                'resentful': 'angry',
+                'pissed': 'angry',
+                
+                // Tired
+                'tired': 'tired',
+                'exhausted': 'tired',
+                'fatigued': 'tired',
+                'weary': 'tired',
+                'drained': 'tired',
+                'burned out': 'tired',
+                'burnt out': 'tired',
+                'sleepy': 'tired',
+                
+                // Lonely
+                'lonely': 'lonely',
+                'loneliness': 'lonely',
+                'alone': 'lonely',
+                'isolated': 'lonely',
+                'detached': 'lonely',
+                'disconnected': 'lonely',
+                'abandoned': 'lonely',
+                
+                // Stressed
+                'stressed': 'stressed',
+                'stress': 'stressed',
+                'pressure': 'stressed',
+                'strained': 'stressed',
+                
+                // Happy
+                'happy': 'happy',
+                'happiness': 'happy',
+                'joy': 'happy',
+                'joyful': 'happy',
+                'content': 'happy',
+                'pleased': 'happy',
+                'glad': 'happy',
+                'delighted': 'happy',
+                
+                // Numb
+                'numb': 'numb',
+                'empty': 'numb',
+                'apathetic': 'numb',
+                'indifferent': 'numb',
+                'emotionless': 'numb',
+                'detached': 'numb',
+                
+                // Confused
+                'confused': 'confused',
+                'confusion': 'confused',
+                'uncertain': 'confused',
+                'unsure': 'confused',
+                'perplexed': 'confused',
+                'bewildered': 'confused',
+                
+                // Frustrated
+                'frustrated': 'frustrated',
+                'frustration': 'frustrated',
+                'stuck': 'frustrated',
+                'blocked': 'frustrated',
+                
+                // Calm
+                'calm': 'calm',
+                'peaceful': 'calm',
+                'serene': 'calm',
+                'tranquil': 'calm',
+                'relaxed': 'calm',
+                'centered': 'calm'
+            };
+            
+            // Check exact matches first
+            if (feelingMap[feeling]) {
+                return feelingMap[feeling];
+            }
+            
+            // Check partial matches
+            for (const [key, value] of Object.entries(feelingMap)) {
+                if (feeling.includes(key)) {
+                    return value;
+                }
+            }
+            
+            // Check for "I feel" patterns
+            if (feeling.includes('i feel')) {
+                const feelingPart = feeling.replace('i feel', '').trim();
+                for (const [key, value] of Object.entries(feelingMap)) {
+                    if (feelingPart.includes(key)) {
+                        return value;
+                    }
+                }
+            }
+            
+            // Check for common emotional phrases
+            const emotionalPhrases = {
+                'i feel like crying': 'sad',
+                'i want to cry': 'sad',
+                'i could scream': 'angry',
+                'i want to scream': 'angry',
+                'i cant breathe': 'anxious',
+                'cant breathe': 'anxious',
+                'heart racing': 'anxious',
+                'mind racing': 'anxious',
+                'too many thoughts': 'overwhelmed',
+                'cant think straight': 'overwhelmed',
+                'dont know what to do': 'confused',
+                'lost': 'confused',
+                'nothing matters': 'numb',
+                'dont care': 'numb',
+                'no energy': 'tired',
+                'no motivation': 'tired',
+                'no one understands': 'lonely',
+                'feel misunderstood': 'lonely'
+            };
+            
+            for (const [phrase, emotion] of Object.entries(emotionalPhrases)) {
+                if (feeling.includes(phrase)) {
+                    return emotion;
+                }
+            }
+            
+            // Default based on common words
+            const words = feeling.split(' ');
+            const positiveWords = ['good', 'great', 'wonderful', 'excellent', 'fantastic', 'awesome', 'fine', 'ok', 'okay', 'alright'];
+            const negativeWords = ['bad', 'terrible', 'awful', 'horrible', 'miserable', 'shit', 'crap'];
+            
+            for (const word of words) {
+                if (positiveWords.includes(word)) return 'happy';
+                if (negativeWords.includes(word)) return 'sad';
+                if (word === 'scared' || word === 'fear') return 'anxious';
+                if (word === 'alone') return 'lonely';
+                if (word === 'confused') return 'confused';
+                if (word === 'angry') return 'angry';
+                if (word === 'tired') return 'tired';
+            }
+            
+            // Ultimate default
+            return 'anxious';
+        }
 
         // ==================== DOM ELEMENTS ====================
         const elements = {
-            // Main sections
             inputSection: document.getElementById('inputSection'),
             loadingSection: document.getElementById('loadingSection'),
-            responseSections: {
-                quick: document.getElementById('responseSectionQuick'),
-                keypoints: document.getElementById('responseSectionKeypoints'),
-                detailed: document.getElementById('responseSectionDetailed')
-            },
-            
-            // Input elements
+            responseSection: document.getElementById('responseSection'),
             feelingInput: document.getElementById('feelingInput'),
             submitBtn: document.getElementById('submitBtn'),
-            quickFeelingsContainer: document.getElementById('quickFeelingsContainer'),
-            
-            // Info modal
+            newFeelingBtn: document.getElementById('newFeelingBtn'),
             infoModal: document.getElementById('infoModal'),
-            infoBtn: document.getElementById('infoBtn'),
             closeInfo: document.getElementById('closeInfo'),
+            infoBtn: document.getElementById('infoBtn'),
             
-            // Settings
-            settingsModal: document.getElementById('settingsModal'),
-            closeSettings: document.getElementById('closeSettings'),
-            saveSettingsBtn: document.getElementById('saveSettingsBtn'),
-            responseLengthSelect: document.getElementById('responseLengthSelect'),
-            themeSelect: document.getElementById('themeSelect'),
-            settingsBtn: document.getElementById('settingsBtn'),
-            themeToggle: document.getElementById('themeToggle'),
-            
-            // Length selector
-            lengthOptions: document.querySelectorAll('.length-option'),
+            // Response content elements
+            whatsHappeningContent: document.getElementById('whatsHappeningContent'),
+            whyLearnedContent: document.getElementById('whyLearnedContent'),
+            beliefCheckContent: document.getElementById('beliefCheckContent'),
+            boundaryRuleContent: document.getElementById('boundaryRuleContent'),
+            noticeAvoidContent: document.getElementById('noticeAvoidContent'),
+            simpleScienceContent: document.getElementById('simpleScienceContent')
         };
 
-        // [CONTINUE WITH ALL YOUR JAVASCRIPT FUNCTIONS]
-        // ... all your JavaScript functions ...
+        // ==================== UI FUNCTIONS ====================
+        function showLoading() {
+            elements.inputSection.style.display = 'none';
+            elements.responseSection.style.display = 'none';
+            elements.loadingSection.style.display = 'block';
+        }
+        
+        function showResponse() {
+            elements.inputSection.style.display = 'none';
+            elements.loadingSection.style.display = 'none';
+            elements.responseSection.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function showInput() {
+            elements.inputSection.style.display = 'block';
+            elements.loadingSection.style.display = 'none';
+            elements.responseSection.style.display = 'none';
+            elements.feelingInput.value = '';
+            elements.feelingInput.focus();
+        }
+        
+        function openModal(modal) {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
 
-        // ==================== INITIALIZE APP ====================
+        // ==================== RESPONSE GENERATION ====================
+        function generateResponse(feeling) {
+            const matchedFeeling = matchFeelingToPattern(feeling);
+            const response = getNextResponseVariation(matchedFeeling);
+            
+            // If no variation found, use a generic response
+            if (!response) {
+                return {
+                    whats_happening: "Your system is processing your current experience.",
+                    why_learned: "This processing once helped make sense of complex situations.",
+                    belief: "Is it true that everything needs immediate understanding?",
+                    boundary: "You might try allowing this moment to be exactly as it is.",
+                    notice: "Notice what's actually happening right now.",
+                    avoid: "Avoid comparing this feeling to others.",
+                    science: "Emotional systems process experience in their own time."
+                };
+            }
+            
+            return response;
+        }
+        
+        function displayResponse(feeling, response) {
+            elements.whatsHappeningContent.textContent = response.whats_happening;
+            elements.whyLearnedContent.textContent = response.why_learned;
+            elements.beliefCheckContent.textContent = `"${response.belief}"`;
+            elements.boundaryRuleContent.textContent = response.boundary;
+            elements.noticeAvoidContent.textContent = `Notice: ${response.notice}. Avoid: ${response.avoid}.`;
+            elements.simpleScienceContent.textContent = response.science;
+        }
+
+        // ==================== EVENT HANDLERS ====================
+        function handleSubmit() {
+            const feeling = elements.feelingInput.value.trim();
+            
+            if (!feeling) {
+                elements.feelingInput.focus();
+                return;
+            }
+            
+            showLoading();
+            
+            // Simulate processing time
+            setTimeout(() => {
+                const response = generateResponse(feeling);
+                displayResponse(feeling, response);
+                showResponse();
+                
+                // Clear input for next time
+                elements.feelingInput.value = '';
+            }, 800);
+        }
+        
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') {
+                handleSubmit();
+            }
+        }
+
+        // ==================== INITIALIZATION ====================
+        function initApp() {
+            // Set up event listeners
+            elements.submitBtn.addEventListener('click', handleSubmit);
+            elements.feelingInput.addEventListener('keypress', handleKeyPress);
+            elements.newFeelingBtn.addEventListener('click', showInput);
+            
+            // Info modal
+            elements.infoBtn.addEventListener('click', () => openModal(elements.infoModal));
+            elements.closeInfo.addEventListener('click', () => closeModal(elements.infoModal));
+            
+            // Close modal on outside click
+            window.addEventListener('click', (e) => {
+                if (e.target === elements.infoModal) {
+                    closeModal(elements.infoModal);
+                }
+            });
+            
+            // Close modal on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal(elements.infoModal);
+                }
+            });
+            
+            // Focus on input
+            elements.feelingInput.focus();
+            
+            // Clear any existing data (fresh start each session)
+            localStorage.clear();
+        }
+
+        // ==================== START APP ====================
         window.addEventListener('DOMContentLoaded', initApp);
+
+        // ==================== SECURITY MEASURES ====================
+        // Prevent right-click context menu
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+        
+        // Prevent keyboard shortcuts for view source
+        document.addEventListener('keydown', (e) => {
+            // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+            if (
+                e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+                (e.ctrlKey && e.key === 'u')
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Prevent text selection
+        document.addEventListener('selectstart', (e) => e.preventDefault());
+        
+        // Obfuscate source code protection
+        window.onload = function() {
+            // Clear console
+            console.clear();
+            
+            // Add protective message
+            console.log('%c⏸️ PAUSE — Emotional Understanding Tool', 'color: #667eea; font-size: 16px; font-weight: bold;');
+            console.log('%cThis tool is designed to help people understand their emotions without judgment.', 'color: #64748b;');
+            console.log('%cRespect the privacy and integrity of this space.', 'color: #64748b;');
+        };
     </script>
 </body>
 </html>
