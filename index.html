@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAUSE - Your Emotional Guide</title>
+    <meta name="description" content="A safe space to understand your feelings without judgment. Complete privacy - no data saved or stored.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 style=%22fill:%2300cc66%22>🌿</text></svg>">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* [ALL YOUR CSS FROM BEFORE - KEEP IT EXACTLY AS IS] */
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5a67d8;
+            --secondary: #764ba2;
+            --accent: #38b2ac;
+            --success: #48bb78;
+            --warning: #ed8936;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --border-radius: 16px;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #f0f4f8 100%);
+            min-height: 100vh;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* [REST OF YOUR CSS - KEEP EVERYTHING] */
+        /* ... All your existing CSS styles ... */
+    </style>
+</head>
+<body>
+    <!-- [ALL YOUR HTML - KEEP EVERYTHING] -->
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🌿</div>
+                <div class="logo-text">PAUSE</div>
+            </a>
+            <div class="nav-actions">
+                <div class="length-selector">
+                    <span class="length-label">Response:</span>
+                    <div class="length-options">
+                        <button class="length-option active" data-length="quick">Quick</button>
+                        <button class="length-option" data-length="keypoints">Key Points</button>
+                        <button class="length-option" data-length="detailed">Detailed</button>
+                    </div>
+                </div>
+                <button class="nav-btn" id="infoBtn" title="Important Information">
+                    <i class="fas fa-info-circle"></i>
+                    <div class="info-badge">!</div>
+                </button>
+                <button class="nav-btn" id="themeToggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="nav-btn" id="settingsBtn" title="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- [CONTINUE WITH ALL YOUR EXISTING HTML] -->
+    <!-- ... All your existing HTML ... -->
+
+    <script>
+        // [ALL YOUR JAVASCRIPT - KEEP EVERYTHING]
+        // ==================== QUOTES DATABASE ====================
+        const quotes = [
+            {
+                text: "The curious paradox is that when I accept myself just as I am, then I can change.",
+                author: "Carl Rogers"
+            },
+            // ... all your quotes ...
+        ];
+
+        // ==================== EMOTIONAL PATTERNS ====================
+        const emotionalPatterns = {
+            anxious: {
+                quick: {
+                    whats_happening: "Your nervous system is on high alert, scanning for potential threats. This is your body's natural protection mechanism activating.",
+                    why_learned: "This hyper-vigilance helped our ancestors survive real dangers. Today it often gets triggered by uncertainty, deadlines, or social pressures.",
+                    belief: "Is it true that worrying will prevent bad things from happening?",
+                    boundary: "Try: 'I can acknowledge this anxiety while choosing where to focus my attention.'",
+                    notice: "Observe shallow breathing, muscle tension, or racing thoughts without judgment.",
+                    avoid: "Resist the urge to search for more potential problems to justify the anxiety.",
+                    science: "Anxiety activates the amygdala, releasing cortisol. This temporary state helps with quick reactions but isn't designed for constant activation."
+                },
+                // ... all your patterns ...
+            },
+            // ... all your emotional patterns ...
+        };
+
+        // ==================== APP STATE ====================
+        let currentResponseLength = 'quick';
+        let lastFeeling = '';
+
+        // ==================== DOM ELEMENTS ====================
+        const elements = {
+            // Main sections
+            inputSection: document.getElementById('inputSection'),
+            loadingSection: document.getElementById('loadingSection'),
+            responseSections: {
+                quick: document.getElementById('responseSectionQuick'),
+                keypoints: document.getElementById('responseSectionKeypoints'),
+                detailed: document.getElementById('responseSectionDetailed')
+            },
+            
+            // Input elements
+            feelingInput: document.getElementById('feelingInput'),
+            submitBtn: document.getElementById('submitBtn'),
+            quickFeelingsContainer: document.getElementById('quickFeelingsContainer'),
+            
+            // Info modal
+            infoModal: document.getElementById('infoModal'),
+            infoBtn: document.getElementById('infoBtn'),
+            closeInfo: document.getElementById('closeInfo'),
+            
+            // Settings
+            settingsModal: document.getElementById('settingsModal'),
+            closeSettings: document.getElementById('closeSettings'),
+            saveSettingsBtn: document.getElementById('saveSettingsBtn'),
+            responseLengthSelect: document.getElementById('responseLengthSelect'),
+            themeSelect: document.getElementById('themeSelect'),
+            settingsBtn: document.getElementById('settingsBtn'),
+            themeToggle: document.getElementById('themeToggle'),
+            
+            // Length selector
+            lengthOptions: document.querySelectorAll('.length-option'),
+        };
+
+        // [CONTINUE WITH ALL YOUR JAVASCRIPT FUNCTIONS]
+        // ... all your JavaScript functions ...
+
+        // ==================== INITIALIZE APP ====================
+        window.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
